@@ -1,6 +1,6 @@
-package managers;
+package com.company.managers;
 
-import model.Customer;
+import com.company.model.Customer;
 
 public class CustomerManager {
     private final Customer customer;

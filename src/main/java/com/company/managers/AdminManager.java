@@ -1,6 +1,6 @@
-package managers;
+package com.company.managers;
 
-import model.Admin;
+import com.company.model.Admin;
 
 public class AdminManager {
 

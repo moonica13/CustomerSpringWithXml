@@ -4,35 +4,72 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="customerManager" class="managers.CustomerManager" init-method="postInit" destroy-method="preDestroy">
+    <bean id="customerManager" class="com.company.managers.CustomerManager" init-method="postInit"
+          destroy-method="preDestroy">
         <constructor-arg ref="Customer1"/>
     </bean>
 
-    <bean id = "Customer1" class = "model.Customer">
-        <constructor-arg name = "id" value = "1"/>
-        <constructor-arg name ="customerName" value = "Marie Poppins"/>
-        <constructor-arg name = "age" value = "25"/>
-        <constructor-arg name = "country" value = "Sweden"/>
-        <constructor-arg name = "zip" value ="807056"/>
+    <bean id="Customer1" class="com.company.model.Customer">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="customerName" value="Marie Poppins"/>
+        <constructor-arg name="age" value="25"/>
+        <constructor-arg name="country" value="Sweden"/>
+        <constructor-arg name="zip" value="807056"/>
     </bean>
 
-    <bean id = "Customer2" class = "model.Customer">
-        <constructor-arg name = "id" value = "2"/>
-        <constructor-arg name ="customerName" value = "Dianne Hopps"/>
-        <constructor-arg name = "age" value = "19"/>
-        <constructor-arg name = "country" value = "Cyprus"/>
-        <constructor-arg name = "zip" value ="000156"/>
+    <bean id="Customer2" class="com.company.model.Customer">
+        <constructor-arg name="id" value="2"/>
+        <constructor-arg name="customerName" value="Dianne Hopps"/>
+        <constructor-arg name="age" value="19"/>
+        <constructor-arg name="country" value="Cyprus"/>
+        <constructor-arg name="zip" value="000156"/>
     </bean>
 
-    <bean id="adminManager" class="managers.AdminManager" init-method="postInit" destroy-method="preDestroy">
+    <bean id="adminManager" class="com.company.managers.AdminManager" init-method="postInit"
+          destroy-method="preDestroy">
         <constructor-arg ref="Admin1"/>
     </bean>
 
-    <bean id = "Admin1" class = "model.Admin">
-        <constructor-arg name = "id" value = "1"/>
-        <constructor-arg name = "username" value = "example1"/>
-        <constructor-arg name = "email" value = "admin@email.com"/>
-        <constructor-arg name = "status" value = "3"/>
+    <bean id="Admin1" class="com.company.model.Admin">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="username" value="example1"/>
+        <constructor-arg name="email" value="admin@email.com"/>
+        <constructor-arg name="status" value="3"/>
+    </bean>
+
+
+    <!--  From vlad's repos  -->
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="dd/MM/yyyy hh:mm:ss"/>
+    </bean>
+
+    <bean id="personManager" class="com.company.managers.PersonManager" init-method="postInit"
+          destroy-method="preDestroy">
+        <constructor-arg ref="user"/>
+    </bean>
+
+    <bean id="user" class="com.company.model.Person">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="firstName" value="Vlad"/>
+        <constructor-arg name="lastName" value="Tf"/>
+        <constructor-arg name="age" value="19"/>
+        <constructor-arg name="birthDate">
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg value="15/01/2000 10:15:45"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="admin" class="com.company.model.Person">
+        <constructor-arg name="id" value="0"/>
+        <constructor-arg name="firstName" value="admin"/>
+        <constructor-arg name="lastName" value="admin"/>
+        <constructor-arg name="age" value="101"/>
+        <constructor-arg name="birthDate">
+            <bean factory-bean="dateFormat" factory-method="parse">
+                <constructor-arg value="01/01/1960 01:00:00"/>
+            </bean>
+        </constructor-arg>
     </bean>
 
 </beans>
