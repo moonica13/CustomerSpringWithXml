@@ -9,5 +9,8 @@
         <module name="CustomerSpring" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CustomerSpring" target="13" />
+    </bytecodeTargetLevel>
   </component>
 </project>
