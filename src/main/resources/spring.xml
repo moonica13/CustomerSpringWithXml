@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customerManager" class="managers.CustomerManager" init-method="postInit" destroy-method="preDestroy">
+        <constructor-arg ref="Customer1"/>
+    </bean>
+
+    <bean id = "Customer1" class = "model.Customer">
+        <constructor-arg name = "id" value = "1"/>
+        <constructor-arg name ="customerName" value = "Marie Poppins"/>
+        <constructor-arg name = "age" value = "25"/>
+        <constructor-arg name = "country" value = "Sweden"/>
+        <constructor-arg name = "zip" value ="807056"/>
+    </bean>
+
+    <bean id = "Customer2" class = "model.Customer">
+        <constructor-arg name = "id" value = "2"/>
+        <constructor-arg name ="customerName" value = "Dianne Hopps"/>
+        <constructor-arg name = "age" value = "19"/>
+        <constructor-arg name = "country" value = "Cyprus"/>
+        <constructor-arg name = "zip" value ="000156"/>
+    </bean>
+
+    <bean id="adminManager" class="managers.AdminManager" init-method="postInit" destroy-method="preDestroy">
+        <constructor-arg ref="Admin1"/>
+    </bean>
+
+    <bean id = "Admin1" class = "model.Admin">
+        <constructor-arg name = "id" value = "1"/>
+        <constructor-arg name = "username" value = "example1"/>
+        <constructor-arg name = "email" value = "admin@email.com"/>
+        <constructor-arg name = "status" value = "3"/>
+    </bean>
+
+</beans>
